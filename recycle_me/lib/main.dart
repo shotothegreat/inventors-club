@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recycle Me',
       theme: ThemeData(
-        primarySwatch: Colors.teal
+        primarySwatch: Colors.teal,
       ),
       home: MyHomePage(title: 'Recycle Me'),
     );
@@ -31,13 +32,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
+    scanner_button_onpress () {
+      //open scanner widget (change state)
+    }
+
+    //change fontFamily attribute also
+    ButtonStyle button_style = ElevatedButton.styleFrom(shadowColor: Color.fromARGB(100, 70, 230, 165),textStyle: const TextStyle(fontSize: 20));
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 70), //may present scaffolding and orientation issues
+            ElevatedButton(
+              style: button_style,
+              onPressed: () {}, //scanner_button_onpress(),
+              child: const Text("Tap to Scan")
+              )
+          ],
         ),
       ),
     );
